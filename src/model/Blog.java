@@ -1,19 +1,21 @@
 package model;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
-public class Blog{
+public class  Blog
+{
+	 private long blogId;
+	 private String blogTitle;
+	 private String blogDescription;
+	 private LocalDate postedOn;
 	
-	int blogId;
-	String blogTitle;
-	String blogDescription;
-	LocalDate postedOn;
 	
 	
-	public int getBlogId() {
+	public long getBlogId() {
 		return blogId;
 	}
-	public void setBlogId(int blogId) {
+	public void setBlogId(long blogId) {
 		this.blogId = blogId;
 	}
 	public String getBlogTitle() {
@@ -31,12 +33,10 @@ public class Blog{
 	public LocalDate getPostedOn() {
 		return postedOn;
 	}
-	public void setPostedOn(LocalDate postedOn) {
-		this.postedOn = postedOn;
+	
+	public void setPostedOn(LocalDate postedOn2) {
+		this.postedOn = postedOn2;
 	}
 	
-	
-	
-	
+	 
 }
-

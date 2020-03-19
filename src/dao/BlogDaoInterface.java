@@ -1,26 +1,14 @@
 package dao;
 
-import java.awt.List;
+import java.sql.SQLException;
+import java.util.List;
 
 import model.Blog;
 
-public class BlogDaoInterface {
+ public interface BlogDaoInterface
+{
+	public void insertBlog(Blog blog) throws SQLException;
 	
-	void insertBlog(Blog blog) {
-		
-		
-		
-	}
-	
-	List selectAllBlogs() {
-		
-		
-		
-		return list;
-		
-		
-		
-	}
+	public List selectAllBlogs() throws SQLException;
 	
 }
-

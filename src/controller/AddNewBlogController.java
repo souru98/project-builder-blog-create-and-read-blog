@@ -1,7 +1,10 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Date;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +19,7 @@ import model.Blog;
 @WebServlet(urlPatterns = {"/new"})
 public class AddNewBlogController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	static int i = 0;
+	static long i = 0;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Getting into Add New Blog");
 		RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/blogListView.jsp");
@@ -30,13 +33,19 @@ public class AddNewBlogController extends HttpServlet {
 		LocalDate postedOn = LocalDate.now();
 		System.out.println(blogTitle);
 		Blog blog = new Blog();
-	//	blog.setBlogId(++i);
+		blog.setBlogId(++i);
+		System.out.println(i);
 		blog.setBlogTitle(blogTitle);
 		blog.setBlogDescription(blogDescription);
 		blog.setPostedOn(postedOn);
 		
 		BlogDaoImpl blogDao = new BlogDaoImpl();
-		blogDao.insertBlog(blog);
+		try {
+			blogDao.insertBlog(blog);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		response.sendRedirect("allblogs");
 		/*
 		 * RequestDispatcher rd=this.getServletContext().getRequestDispatcher(
